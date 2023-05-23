@@ -28,13 +28,13 @@ try
     }
 
     //Najít průnik mezi dat z monitoringu a konfguračními daty
-    foreach (var doc in articles)
+    foreach (var art in articles)
     {
-        var sourceItem = sourceList.FirstOrDefault(x => x.Id == doc.Source);
+        var sourceItem = sourceList.FirstOrDefault(x => x.Id == art.Source);
         if (sourceItem != null)
         {
-            doc.Source = sourceItem.Name;
-            doc.IsCorrect = true;
+            art.Source = sourceItem.Name;
+            art.IsCorrect = true;
         }
     }
 
