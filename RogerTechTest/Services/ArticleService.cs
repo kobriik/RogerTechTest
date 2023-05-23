@@ -5,23 +5,23 @@ using System.Xml.Serialization;
 
 namespace RogerTechTest.Services
 {
-    public class DocumentService
+    public class ArticleService
     {
         /// <summary>
         /// Načtení dat 
         /// </summary>
-        public IEnumerable<Document> GetData(string path)
+        public IEnumerable<Article> GetData(string path)
         {
             XElement purchaseOrder = XElement.Load(path);
-            XmlSerializer serializer = new(typeof(Document));
+            XmlSerializer serializer = new(typeof(Article));
 
-            return purchaseOrder.Descendants("document").Select(x => (Document)serializer.Deserialize(x.CreateReader()));
+            return purchaseOrder.Descendants("document").Select(x => (Article)serializer.Deserialize(x.CreateReader()));
         }
 
         /// <summary>
         /// Konverze dat do jsonu
         /// </summary>
-        public string ConvertData2Output(List<Document> documents, bool correct)
+        public string ConvertData2Output(List<Article> documents, bool correct)
         {
             return JsonConvert.SerializeObject(documents.Where(x => x.IsCorrect == correct).Select(x => new
             {

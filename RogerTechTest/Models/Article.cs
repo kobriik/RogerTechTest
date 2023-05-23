@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace RogerTechTest.Models
 {
     [XmlRoot("document")]
-    public class Document
+    public class Article
     {
         [XmlAttribute("id_site")]
         public string Source { get; set; }

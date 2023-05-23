@@ -15,8 +15,8 @@ try
     string date = DateTime.Today.ToString("yyyyMMdd");
 
     SourceService sourceService = new();
-    DocumentService documentService = new();
-    List<Document> documents = new();
+    ArticleService articleService = new();
+    List<Article> articles = new();
 
     //Načtení konfiguračních dat
     List<Source> sourceList = sourceService.GetData(sourceFolderPath);
@@ -24,11 +24,11 @@ try
     //Načtení dat z monitoringu
     foreach (var file in Directory.GetFiles(inputFolderPath))
     {
-        documents.AddRange(documentService.GetData(file));
+        articles.AddRange(articleService.GetData(file));
     }
 
     //Najít průnik mezi dat z monitoringu a konfguračními daty
-    foreach (var doc in documents)
+    foreach (var doc in articles)
     {
         var sourceItem = sourceList.FirstOrDefault(x => x.Id == doc.Source);
         if (sourceItem != null)
@@ -39,8 +39,8 @@ try
     }
 
     //Konverze na json
-    string correctData = documentService.ConvertData2Output(documents, true);
-    string errorData = documentService.ConvertData2Output(documents, false);
+    string correctData = articleService.ConvertData2Output(articles, true);
+    string errorData = articleService.ConvertData2Output(articles, false);
 
     //Vytvoření složek pokud nejsou
     if (!Directory.Exists(outputFolderPath))
