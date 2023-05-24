@@ -21,9 +21,9 @@ namespace RogerTechTest.Services
         /// <summary>
         /// Konverze dat do jsonu
         /// </summary>
-        public string ConvertData2Output(List<Article> documents, bool correct)
+        public string ConvertData2Output(List<Article> articles, bool correct)
         {
-            return JsonConvert.SerializeObject(documents.Where(x => x.IsCorrect == correct).Select(x => new
+            return JsonConvert.SerializeObject(articles.Where(x => x.IsCorrect == correct).Select(x => new
             {
                 source = x.Source,
                 published = x.Published,
