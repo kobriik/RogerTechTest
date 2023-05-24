@@ -1,7 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using RogerTechTest.Models;
-using System.Collections;
 using System.Globalization;
 
 namespace RogerTechTest.Services
