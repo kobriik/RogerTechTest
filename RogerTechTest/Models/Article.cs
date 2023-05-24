@@ -21,7 +21,7 @@ namespace RogerTechTest.Models
         [XmlElement("body")]
         public Body Content { get; set; }
 
-        public string BodyText => string.Join(" ", Content.p.Select(x => x.Value).ToList());
+        public string BodyText => string.Join(" ", Content.P.Select(x => x.Value).ToList());
 
         [XmlElement("topics")]
         public Topic Topic { get; set; }
@@ -43,7 +43,7 @@ namespace RogerTechTest.Models
     public class Body
     {
         [XmlElement("p")]
-        public List<Paragraph> p { get; set; }
+        public List<Paragraph> P { get; set; }
     }
 
     public class Paragraph : Text
