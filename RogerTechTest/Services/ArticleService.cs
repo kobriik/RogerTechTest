@@ -12,10 +12,10 @@ namespace RogerTechTest.Services
         /// </summary>
         public IEnumerable<Article> GetData(string path)
         {
-            XElement purchaseOrder = XElement.Load(path);
+            XElement document = XElement.Load(path);
             XmlSerializer serializer = new(typeof(Article));
 
-            return purchaseOrder.Descendants("document").Select(x => (Article)serializer.Deserialize(x.CreateReader()));
+            return document.Descendants("document").Select(x => (Article)serializer.Deserialize(x.CreateReader()));
         }
 
         /// <summary>
